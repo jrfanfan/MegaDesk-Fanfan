@@ -29,112 +29,87 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddQuote));
-            customername = new Label();
-            label1 = new Label();
-            deskwidth = new Label();
-            textBoxcustname = new TextBox();
-            numericUpDownDeskdepth = new NumericUpDown();
-            numericUpDown1 = new NumericUpDown();
-            numberofdrawers = new Label();
-            Material = new Label();
+            labelCustomerName = new Label();
+            labelDeskDepth = new Label();
+            labelDeskWidth = new Label();
+            customerName = new TextBox();
+            labelNumberofdrawers = new Label();
+            labelMaterial = new Label();
             listBoxmaterial = new ListBox();
-            numericUpDownDeskWide = new NumericUpDown();
-            rush = new Label();
-            dateTimePicker1 = new DateTimePicker();
+            labelRushDays = new Label();
+            dateTime = new DateTimePicker();
             panel1 = new Panel();
+            labelDate = new Label();
+            rushDays = new TextBox();
+            numberDrawers = new TextBox();
+            deskDepth = new TextBox();
+            deskWide = new TextBox();
             save = new Button();
-            ((System.ComponentModel.ISupportInitialize)numericUpDownDeskdepth).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDown1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDownDeskWide).BeginInit();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
-            // customername
+            // labelCustomerName
             // 
-            customername.AutoSize = true;
-            customername.Font = new Font("Segoe UI", 12F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
-            customername.Location = new Point(3, 85);
-            customername.Name = "customername";
-            customername.Size = new Size(190, 32);
-            customername.TabIndex = 0;
-            customername.Text = "Customer name";
+            labelCustomerName.AutoSize = true;
+            labelCustomerName.Font = new Font("Segoe UI", 12F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
+            labelCustomerName.Location = new Point(3, 85);
+            labelCustomerName.Name = "labelCustomerName";
+            labelCustomerName.Size = new Size(190, 32);
+            labelCustomerName.TabIndex = 3;
+            labelCustomerName.Text = "Customer name";
             // 
-            // label1
+            // labelDeskDepth
             // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 12F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
-            label1.Location = new Point(3, 221);
-            label1.Name = "label1";
-            label1.Size = new Size(138, 32);
-            label1.TabIndex = 4;
-            label1.Text = "Desk depth";
-            label1.Click += label1_Click;
+            labelDeskDepth.AutoSize = true;
+            labelDeskDepth.Font = new Font("Segoe UI", 12F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
+            labelDeskDepth.Location = new Point(3, 221);
+            labelDeskDepth.Name = "labelDeskDepth";
+            labelDeskDepth.Size = new Size(138, 32);
+            labelDeskDepth.TabIndex = 7;
+            labelDeskDepth.Text = "Desk depth";
+            labelDeskDepth.Click += label1_Click;
             // 
-            // deskwidth
+            // labelDeskWidth
             // 
-            deskwidth.AutoSize = true;
-            deskwidth.Font = new Font("Segoe UI", 12F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
-            deskwidth.Location = new Point(3, 153);
-            deskwidth.Name = "deskwidth";
-            deskwidth.Size = new Size(139, 32);
-            deskwidth.TabIndex = 2;
-            deskwidth.Text = "Desk width";
+            labelDeskWidth.AutoSize = true;
+            labelDeskWidth.Font = new Font("Segoe UI", 12F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
+            labelDeskWidth.Location = new Point(3, 153);
+            labelDeskWidth.Name = "labelDeskWidth";
+            labelDeskWidth.Size = new Size(139, 32);
+            labelDeskWidth.TabIndex = 5;
+            labelDeskWidth.Text = "Desk width";
             // 
-            // textBoxcustname
+            // customerName
             // 
-            textBoxcustname.BackColor = SystemColors.ControlLight;
-            textBoxcustname.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            textBoxcustname.Location = new Point(251, 78);
-            textBoxcustname.Name = "textBoxcustname";
-            textBoxcustname.PlaceholderText = "       Full  Name";
-            textBoxcustname.Size = new Size(324, 39);
-            textBoxcustname.TabIndex = 1;
-            textBoxcustname.TextAlign = HorizontalAlignment.Center;
-            textBoxcustname.TextChanged += textBox1_TextChanged;
+            customerName.BackColor = SystemColors.ControlLight;
+            customerName.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            customerName.Location = new Point(251, 78);
+            customerName.Name = "customerName";
+            customerName.PlaceholderText = "       Full  Name";
+            customerName.Size = new Size(324, 39);
+            customerName.TabIndex = 4;
+            customerName.TextAlign = HorizontalAlignment.Center;
+            customerName.TextChanged += textBox1_TextChanged;
             // 
-            // numericUpDownDeskdepth
+            // labelNumberofdrawers
             // 
-            numericUpDownDeskdepth.BackColor = SystemColors.ControlLight;
-            numericUpDownDeskdepth.DecimalPlaces = 2;
-            numericUpDownDeskdepth.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            numericUpDownDeskdepth.Increment = new decimal(new int[] { 11, 0, 0, 65536 });
-            numericUpDownDeskdepth.Location = new Point(251, 221);
-            numericUpDownDeskdepth.Name = "numericUpDownDeskdepth";
-            numericUpDownDeskdepth.Size = new Size(180, 39);
-            numericUpDownDeskdepth.TabIndex = 5;
-            numericUpDownDeskdepth.TextAlign = HorizontalAlignment.Center;
+            labelNumberofdrawers.AutoSize = true;
+            labelNumberofdrawers.Font = new Font("Segoe UI", 12F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
+            labelNumberofdrawers.Location = new Point(3, 289);
+            labelNumberofdrawers.Name = "labelNumberofdrawers";
+            labelNumberofdrawers.Size = new Size(232, 32);
+            labelNumberofdrawers.TabIndex = 9;
+            labelNumberofdrawers.Text = "Number of drawers";
             // 
-            // numericUpDown1
+            // labelMaterial
             // 
-            numericUpDown1.BackColor = SystemColors.ControlLight;
-            numericUpDown1.DecimalPlaces = 2;
-            numericUpDown1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            numericUpDown1.Increment = new decimal(new int[] { 11, 0, 0, 65536 });
-            numericUpDown1.Location = new Point(251, 289);
-            numericUpDown1.Name = "numericUpDown1";
-            numericUpDown1.Size = new Size(180, 39);
-            numericUpDown1.TabIndex = 7;
-            numericUpDown1.TextAlign = HorizontalAlignment.Center;
-            // 
-            // numberofdrawers
-            // 
-            numberofdrawers.AutoSize = true;
-            numberofdrawers.Font = new Font("Segoe UI", 12F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
-            numberofdrawers.Location = new Point(3, 289);
-            numberofdrawers.Name = "numberofdrawers";
-            numberofdrawers.Size = new Size(232, 32);
-            numberofdrawers.TabIndex = 6;
-            numberofdrawers.Text = "Number of drawers";
-            // 
-            // Material
-            // 
-            Material.AutoSize = true;
-            Material.Font = new Font("Segoe UI", 12F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
-            Material.Location = new Point(3, 357);
-            Material.Name = "Material";
-            Material.Size = new Size(110, 32);
-            Material.TabIndex = 8;
-            Material.Text = "Material";
+            labelMaterial.AutoSize = true;
+            labelMaterial.Font = new Font("Segoe UI", 12F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
+            labelMaterial.Location = new Point(3, 357);
+            labelMaterial.Name = "labelMaterial";
+            labelMaterial.Size = new Size(110, 32);
+            labelMaterial.TabIndex = 11;
+            labelMaterial.Text = "Material";
             // 
             // listBoxmaterial
             // 
@@ -145,72 +120,105 @@
             listBoxmaterial.Items.AddRange(new object[] { "None", "laminate", "oak", "pine", "rosewood", "veneer" });
             listBoxmaterial.Location = new Point(251, 357);
             listBoxmaterial.Name = "listBoxmaterial";
-            listBoxmaterial.Size = new Size(180, 36);
-            listBoxmaterial.TabIndex = 9;
+            listBoxmaterial.Size = new Size(150, 36);
+            listBoxmaterial.TabIndex = 12;
             // 
-            // numericUpDownDeskWide
+            // labelRushDays
             // 
-            numericUpDownDeskWide.BackColor = SystemColors.ControlLight;
-            numericUpDownDeskWide.DecimalPlaces = 2;
-            numericUpDownDeskWide.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            numericUpDownDeskWide.Increment = new decimal(new int[] { 11, 0, 0, 65536 });
-            numericUpDownDeskWide.Location = new Point(251, 154);
-            numericUpDownDeskWide.Name = "numericUpDownDeskWide";
-            numericUpDownDeskWide.Size = new Size(180, 39);
-            numericUpDownDeskWide.TabIndex = 3;
-            numericUpDownDeskWide.TextAlign = HorizontalAlignment.Center;
+            labelRushDays.AutoSize = true;
+            labelRushDays.Font = new Font("Segoe UI", 12F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
+            labelRushDays.Location = new Point(3, 425);
+            labelRushDays.Name = "labelRushDays";
+            labelRushDays.Size = new Size(131, 32);
+            labelRushDays.TabIndex = 13;
+            labelRushDays.Text = "Rush Days";
             // 
-            // rush
+            // dateTime
             // 
-            rush.AutoSize = true;
-            rush.Font = new Font("Segoe UI", 12F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
-            rush.Location = new Point(3, 425);
-            rush.Name = "rush";
-            rush.Size = new Size(68, 32);
-            rush.TabIndex = 10;
-            rush.Text = "Rush";
-            // 
-            // dateTimePicker1
-            // 
-            dateTimePicker1.CalendarMonthBackground = SystemColors.ControlLightLight;
-            dateTimePicker1.Location = new Point(12, 31);
-            dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(300, 31);
-            dateTimePicker1.TabIndex = 11;
+            dateTime.CalendarMonthBackground = SystemColors.ControlLightLight;
+            dateTime.Location = new Point(251, 26);
+            dateTime.Name = "dateTime";
+            dateTime.Size = new Size(324, 31);
+            dateTime.TabIndex = 2;
             // 
             // panel1
             // 
             panel1.BackColor = SystemColors.ActiveCaption;
+            panel1.Controls.Add(labelDate);
+            panel1.Controls.Add(rushDays);
+            panel1.Controls.Add(numberDrawers);
+            panel1.Controls.Add(deskDepth);
+            panel1.Controls.Add(deskWide);
             panel1.Controls.Add(save);
-            panel1.Controls.Add(dateTimePicker1);
-            panel1.Controls.Add(numberofdrawers);
-            panel1.Controls.Add(rush);
-            panel1.Controls.Add(customername);
+            panel1.Controls.Add(dateTime);
+            panel1.Controls.Add(labelNumberofdrawers);
+            panel1.Controls.Add(labelRushDays);
+            panel1.Controls.Add(labelCustomerName);
             panel1.Controls.Add(listBoxmaterial);
-            panel1.Controls.Add(label1);
-            panel1.Controls.Add(Material);
-            panel1.Controls.Add(deskwidth);
-            panel1.Controls.Add(numericUpDown1);
-            panel1.Controls.Add(textBoxcustname);
-            panel1.Controls.Add(numericUpDownDeskWide);
-            panel1.Controls.Add(numericUpDownDeskdepth);
+            panel1.Controls.Add(labelDeskDepth);
+            panel1.Controls.Add(labelMaterial);
+            panel1.Controls.Add(labelDeskWidth);
+            panel1.Controls.Add(customerName);
             panel1.Location = new Point(12, 12);
             panel1.Name = "panel1";
             panel1.Size = new Size(593, 552);
             panel1.TabIndex = 12;
             panel1.Paint += panel1_Paint;
             // 
+            // labelDate
+            // 
+            labelDate.AutoSize = true;
+            labelDate.Font = new Font("Segoe UI", 12F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
+            labelDate.Location = new Point(3, 26);
+            labelDate.Name = "labelDate";
+            labelDate.Size = new Size(67, 32);
+            labelDate.TabIndex = 1;
+            labelDate.Text = "Date";
+            // 
+            // rushDays
+            // 
+            rushDays.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            rushDays.Location = new Point(251, 426);
+            rushDays.Name = "rushDays";
+            rushDays.Size = new Size(150, 39);
+            rushDays.TabIndex = 14;
+            // 
+            // numberDrawers
+            // 
+            numberDrawers.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            numberDrawers.Location = new Point(251, 292);
+            numberDrawers.Name = "numberDrawers";
+            numberDrawers.Size = new Size(150, 39);
+            numberDrawers.TabIndex = 10;
+            // 
+            // deskDepth
+            // 
+            deskDepth.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            deskDepth.Location = new Point(251, 221);
+            deskDepth.Name = "deskDepth";
+            deskDepth.Size = new Size(150, 39);
+            deskDepth.TabIndex = 8;
+            // 
+            // deskWide
+            // 
+            deskWide.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            deskWide.Location = new Point(251, 156);
+            deskWide.Name = "deskWide";
+            deskWide.Size = new Size(150, 39);
+            deskWide.TabIndex = 6;
+            // 
             // save
             // 
             save.BackColor = Color.MediumSeaGreen;
             save.Cursor = Cursors.Hand;
             save.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            save.Location = new Point(463, 464);
+            save.Location = new Point(251, 476);
             save.Name = "save";
-            save.Size = new Size(112, 51);
-            save.TabIndex = 12;
+            save.Size = new Size(150, 51);
+            save.TabIndex = 15;
             save.Text = "Save";
             save.UseVisualStyleBackColor = false;
+            save.Click += save_Click;
             // 
             // AddQuote
             // 
@@ -225,9 +233,6 @@
             Name = "AddQuote";
             Text = "Add Quote";
             Load += AddQuote_Load;
-            ((System.ComponentModel.ISupportInitialize)numericUpDownDeskdepth).EndInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDown1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDownDeskWide).EndInit();
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ResumeLayout(false);
@@ -235,19 +240,21 @@
 
         #endregion
 
-        private Label customername;
-        private Label label1;
-        private Label deskwidth;
-        private TextBox textBoxcustname;
-        private NumericUpDown numericUpDownDeskdepth;
-        private NumericUpDown numericUpDown1;
-        private Label numberofdrawers;
-        private Label Material;
+        private Label labelCustomerName;
+        private Label labelDeskDepth;
+        private Label labelDeskWidth;
+        private TextBox customerName;
+        private Label labelNumberofdrawers;
+        private Label labelMaterial;
         private ListBox listBoxmaterial;
-        private NumericUpDown numericUpDownDeskWide;
-        private Label rush;
-        private DateTimePicker dateTimePicker1;
+        private Label labelRushDays;
+        private DateTimePicker dateTime;
         private Panel panel1;
         private Button save;
+        private TextBox deskWide;
+        private TextBox rushDays;
+        private TextBox numberDrawers;
+        private TextBox deskDepth;
+        private Label labelDate;
     }
 }
