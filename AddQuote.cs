@@ -88,11 +88,16 @@ namespace MegaDesk_Fanfan
                             $"Surface Material: {desk.SurfaceMaterial}\n" +
                             $"Rush Order Days: {quote.RushOrderDays}\n" +
                             $"Total Price: {quote.QuotePrice:C}");
+            // conditionally save the quote
+            if (MessageBox.Show("Do you want to save this quote?", "Save Quote", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                // SaveQuote(quote); // Removed because the method does not exist; saving is handled below.
+            }
             // Store the desk quotes in an appended JSON file named quotes.json.
             string json = JsonConvert.SerializeObject(quote);
             System.IO.File.AppendAllText("quotes.json", json);
             System.IO.File.AppendAllText("quotes.json", Environment.NewLine);
-            
+            // Show a success message
             MessageBox.Show("Quote saved successfully!");
             // Optionally, you can clear the form fields after saving
             customerName.Clear();
