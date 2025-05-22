@@ -136,7 +136,7 @@
             // 
             // dateTime
             // 
-            dateTime.CalendarMonthBackground = SystemColors.ControlLightLight;
+            dateTime.CalendarMonthBackground = SystemColors.GradientActiveCaption;
             dateTime.Location = new Point(251, 26);
             dateTime.Name = "dateTime";
             dateTime.Size = new Size(324, 31);
@@ -178,6 +178,7 @@
             // 
             // rushDays
             // 
+            rushDays.BackColor = SystemColors.ControlLight;
             rushDays.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             rushDays.Location = new Point(251, 426);
             rushDays.Name = "rushDays";
@@ -186,6 +187,7 @@
             // 
             // numberDrawers
             // 
+            numberDrawers.BackColor = SystemColors.ControlLight;
             numberDrawers.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             numberDrawers.Location = new Point(251, 292);
             numberDrawers.Name = "numberDrawers";
@@ -194,6 +196,7 @@
             // 
             // deskDepth
             // 
+            deskDepth.BackColor = SystemColors.ControlLight;
             deskDepth.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             deskDepth.Location = new Point(251, 221);
             deskDepth.Name = "deskDepth";
@@ -202,6 +205,7 @@
             // 
             // deskWide
             // 
+            deskWide.BackColor = SystemColors.ControlLight;
             deskWide.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             deskWide.Location = new Point(251, 156);
             deskWide.Name = "deskWide";
@@ -230,7 +234,7 @@
             richTextBox1.Name = "richTextBox1";
             richTextBox1.ReadOnly = true;
             richTextBox1.Size = new Size(497, 552);
-            richTextBox1.TabIndex = 13;
+            richTextBox1.TabIndex = 16;
             richTextBox1.Text = resources.GetString("richTextBox1.Text");
             // 
             // AddQuote
