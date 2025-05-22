@@ -28,8 +28,8 @@ namespace MegaDesk_Fanfan
         private void button1_Click(object sender, EventArgs e)
         {
             // load view quote
-            DisplayQuote displayQuote = new DisplayQuote();
-            displayQuote.Show();
+            ViewAllQuotes viewAllQuotes = new ViewAllQuotes();
+            viewAllQuotes.Show();
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)

@@ -16,5 +16,12 @@ namespace MegaDesk_Fanfan
         {
             InitializeComponent();
         }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            // Read the quotes from the json file 
+            List<DeskQuote> quotes = DeskQuote.LoadQuotesFromFile("quotes.json");
+           
+        }
     }
 }

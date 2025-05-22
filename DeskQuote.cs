@@ -130,5 +130,10 @@ namespace MegaDesk_Fanfan
             
             QuotePrice = basePrice;
         }
+
+        internal static List<DeskQuote> LoadQuotesFromFile(string v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
