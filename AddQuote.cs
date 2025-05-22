@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Newtonsoft.Json;
 
 namespace MegaDesk_Fanfan
 {
@@ -87,7 +88,19 @@ namespace MegaDesk_Fanfan
                             $"Surface Material: {desk.SurfaceMaterial}\n" +
                             $"Rush Order Days: {quote.RushOrderDays}\n" +
                             $"Total Price: {quote.QuotePrice:C}");
-                            
+            // Store the desk quotes in an appended JSON file named quotes.json.
+            string json = JsonConvert.SerializeObject(quote);
+            System.IO.File.AppendAllText("quotes.json", json);
+            System.IO.File.AppendAllText("quotes.json", Environment.NewLine);
+            
+            MessageBox.Show("Quote saved successfully!");
+            // Optionally, you can clear the form fields after saving
+            customerName.Clear();
+            deskWide.Clear();
+            deskDepth.Clear();
+            numberDrawers.Clear();
+            listBoxmaterial.ClearSelected();
+            rushDays.Clear();
         }
     }
 }
