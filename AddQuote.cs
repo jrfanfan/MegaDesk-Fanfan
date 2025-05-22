@@ -104,7 +104,7 @@ namespace MegaDesk_Fanfan
             deskWide.Clear();
             deskDepth.Clear();
             numberDrawers.Clear();
-            listBoxmaterial.ClearSelected();
+            listBoxmaterial.SelectedIndex = -1;
             rushDays.Clear();
         }
     }

@@ -33,7 +33,7 @@ namespace MegaDesk_Fanfan
             Width = width;
             Depth = depth;
             NumberOfDrawers = numberOfDrawers;
-            SurfaceMaterial = "None"; // default value
+            SurfaceMaterial = string.Empty;
         }
 
 

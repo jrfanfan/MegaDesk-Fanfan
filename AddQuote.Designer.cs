@@ -45,6 +45,7 @@
             deskDepth = new TextBox();
             deskWide = new TextBox();
             save = new Button();
+            richTextBox1 = new RichTextBox();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
@@ -220,18 +221,31 @@
             save.UseVisualStyleBackColor = false;
             save.Click += save_Click;
             // 
+            // richTextBox1
+            // 
+            richTextBox1.BackColor = SystemColors.InactiveCaption;
+            richTextBox1.Font = new Font("Segoe UI", 12F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
+            richTextBox1.ForeColor = SystemColors.HotTrack;
+            richTextBox1.Location = new Point(611, 12);
+            richTextBox1.Name = "richTextBox1";
+            richTextBox1.ReadOnly = true;
+            richTextBox1.Size = new Size(497, 552);
+            richTextBox1.TabIndex = 13;
+            richTextBox1.Text = resources.GetString("richTextBox1.Text");
+            // 
             // AddQuote
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.InactiveCaption;
             ClientSize = new Size(1120, 576);
+            Controls.Add(richTextBox1);
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.SizableToolWindow;
             Icon = (Icon)resources.GetObject("$this.Icon");
             MaximizeBox = false;
             Name = "AddQuote";
-            Text = "Add Quote";
+            Text = "Required Inputs and Input Constraints:";
             Load += AddQuote_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
@@ -256,5 +270,6 @@
         private TextBox numberDrawers;
         private TextBox deskDepth;
         private Label labelDate;
+        private RichTextBox richTextBox1;
     }
 }
