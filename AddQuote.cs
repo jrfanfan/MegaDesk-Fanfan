@@ -59,7 +59,7 @@ namespace MegaDesk_Fanfan
                 _ = MessageBox.Show($"Depth must be between {Desk.MIN_DEPTH} and {Desk.MAX_DEPTH}.");
                 return;
             }
-                if (!int.TryParse(numberDrawers.Text, out int drawers) || drawers < 0 || drawers > Desk.MAX_DRAWERS)
+            if (!int.TryParse(numberDrawers.Text, out int drawers) || drawers < 0 || drawers > Desk.MAX_DRAWERS)
             {
                 _ = MessageBox.Show($"Number of drawers must be between 0 and {Desk.MAX_DRAWERS}.");
                 return;
@@ -75,6 +75,19 @@ namespace MegaDesk_Fanfan
                 return;
             }
 
+            // Create a new DeskQuote object
+            Desk desk = new Desk(width, depth, drawers, listBoxmaterial.Text);
+            DeskQuote quote = new DeskQuote(customerName.Text, desk, parsedRushDays, 0);
+            quote.CalculateQuote();
+
+            // show the quote
+            MessageBox.Show($"Quote for {customerName.Text}:\n" +
+                            $"Desk Size: {desk.Width} x {desk.Depth}\n" +
+                            $"Number of Drawers: {desk.NumberOfDrawers}\n" +
+                            $"Surface Material: {desk.SurfaceMaterial}\n" +
+                            $"Rush Order Days: {quote.RushOrderDays}\n" +
+                            $"Total Price: {quote.QuotePrice:C}");
+                            
         }
     }
 }
