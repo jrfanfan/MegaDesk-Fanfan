@@ -93,10 +93,13 @@ namespace MegaDesk_Fanfan
             {
                 // SaveQuote(quote); // Removed because the method does not exist; saving is handled below.
             }
-            // Store the desk quotes in an appended JSON file named quotes.json.
-            string json = JsonConvert.SerializeObject(quote);
-            System.IO.File.AppendAllText("quotes.json", json);
-            System.IO.File.AppendAllText("quotes.json", Environment.NewLine);
+            // Store the desk quotes  and append them to a JSON file named quotes.json.
+            string filePath = "quotes.json";
+            List<DeskQuote> quotes = new List<DeskQuote>();
+            quotes.Add(quote);
+            string json = JsonConvert.SerializeObject(quotes);
+            System.IO.File.AppendAllText(filePath, json);
+            System.IO.File.AppendAllText(filePath, Environment.NewLine);
             // Show a success message
             MessageBox.Show("Quote saved successfully!");
             // Optionally, you can clear the form fields after saving

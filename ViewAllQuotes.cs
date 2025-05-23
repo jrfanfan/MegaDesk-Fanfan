@@ -10,6 +10,21 @@ using System.Windows.Forms;
 
 namespace MegaDesk_Fanfan
 {
+    // Define the Quote class if it does not exist elsewhere
+    public class Quote
+    {
+        public string? CustomerName { get; set; }
+        public DateTime Date { get; set; }
+        public decimal Price { get; set; }
+        // Add other properties as needed
+        public string? Material { get; set; }
+        public int[]? Width { get; set; }
+        public int[]? Depth { get; set; }
+        public int[]? DrawerCount { get; set; }
+        public int[]? RushOrder { get; set; }
+        public string? SurfaceArea { get; set; }
+    }
+
     public partial class ViewAllQuotes : Form
     {
         public ViewAllQuotes()
@@ -17,11 +32,27 @@ namespace MegaDesk_Fanfan
             InitializeComponent();
         }
 
+        private void ViewAllQuotes_Load(object sender, EventArgs e)
+        {
+            MessageBox.Show("Welcome to View All Quotes!");
+            // Load quotes from a json file and bind it into DataGridView
+            string filePath = "quotes.json"; // Adjust the path as necessary
+            if (System.IO.File.Exists(filePath))
+            {
+                string json = System.IO.File.ReadAllText(filePath);
+                var quotes = Newtonsoft.Json.JsonConvert.DeserializeObject<List<Quote>>(json) ?? new List<Quote>();
+                dataGridView1.DataSource = quotes;
+            }
+            else
+            {
+                MessageBox.Show("No quotes found.");
+            }
+        }
+
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            // Read the quotes from the json file 
-            List<DeskQuote> quotes = DeskQuote.LoadQuotesFromFile("quotes.json");
-           
+            MessageBox.Show("You clicked on a cell!");
+
         }
     }
 }
