@@ -16,17 +16,17 @@ namespace MegaDesk_Fanfan
     public class Quote
     {
         public string? CustomerName { get; set; }
-        public int[] Price { get; set; } = Array.Empty<int>();
-        public int[] RushOrder { get; set; } = Array.Empty<int>();
+        public int Price { get; set; } 
+        public int RushOrder { get; set; } 
 
-        public int[] DrawerCount { get; set; } = Array.Empty<int>();
+        public int DrawerCount { get; set; }
 
-        public int[] SurfaceMaterial { get; set; } = Array.Empty<int>();
+        public int SurfaceMaterial { get; set; }
 
-        public int[] DeskWidth { get; set; } = Array.Empty<int>();
-        public int[] DeskDepth { get; set; } = Array.Empty<int>();
+        public int DeskWidth { get; set; }
+        public int DeskDepth { get; set; }
         //date
-        public DateTime Date { get; set; } = DateTime.Now;
+        public DateTime Date { get; set; }
        
     }
 
