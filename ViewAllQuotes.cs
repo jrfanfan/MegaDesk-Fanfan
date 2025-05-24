@@ -1,29 +1,33 @@
-﻿using System;
+﻿// Description: This file contains the ViewAllQuotes class, which is responsible for displaying all quotes in a DataGridView.
+using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.IO;
+using Newtonsoft.Json; // Install via NuGet: Newtonsoft.Json
 using System.Windows.Forms;
+using System.Linq;
+using System.Data;
 
 namespace MegaDesk_Fanfan
 {
+    // Desk class definition
+    // The Desk class is defined elsewhere in the project.
+
     // Define the Quote class if it does not exist elsewhere
     public class Quote
     {
         public string? CustomerName { get; set; }
-        public DateTime Date { get; set; }
-        public int Price { get; set; }
-        // Add other properties as needed
-        public string? Material { get; set; }
-        public int Width { get; set; }
-        public int Depth { get; set; }
-        public int DrawerCount { get; set; }
-        public string? RushOrder { get; set; }
-        
-        
+        public int[] Price { get; set; } = Array.Empty<int>();
+        public int[] RushOrder { get; set; } = Array.Empty<int>();
+
+        public int[] DrawerCount { get; set; } = Array.Empty<int>();
+
+        public int[] SurfaceMaterial { get; set; } = Array.Empty<int>();
+
+        public int[] DeskWidth { get; set; } = Array.Empty<int>();
+        public int[] DeskDepth { get; set; } = Array.Empty<int>();
+        //date
+        public DateTime Date { get; set; } = DateTime.Now;
+       
     }
 
     public partial class ViewAllQuotes : Form
@@ -31,19 +35,26 @@ namespace MegaDesk_Fanfan
         public ViewAllQuotes()
         {
             InitializeComponent();
+            
         }
 
         private void ViewAllQuotes_Load(object sender, EventArgs e)
         {
             MessageBox.Show("Welcome to View All Quotes!");
-            // Load quotes from a json file and bind it into DataGridView
-            string filePath = "quotes.json"; // Adjust the path as necessary
-            string json = System.IO.File.ReadAllText(filePath);
-            var quotes = Newtonsoft.Json.JsonConvert.DeserializeObject<List<Quote>>(json) ?? new List<Quote>();
-            // Set the DataGridView's DataSource to the list of quotes
-            dataGridView1.AutoGenerateColumns = true; // Enable auto generation of columns
-            dataGridView1.DataSource = quotes;
+            // Read the quotes from the JSON file and bind to the DataGridView
+            string filePath = "quotes.json"; // Adjust the path as needed
+            if (File.Exists(filePath))
+            {
+                string json = File.ReadAllText(filePath);
+                List<Quote> quotes = JsonConvert.DeserializeObject<List<Quote>>(json) ?? new List<Quote>();
 
+                // Bind the quotes to the DataGridView
+                dataGridView1.DataSource = quotes;
+            }
+            else
+            {
+                MessageBox.Show("No quotes found.");
+            }
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -51,5 +62,7 @@ namespace MegaDesk_Fanfan
             MessageBox.Show("You clicked on a cell!");
 
         }
+
+        
     }
 }
