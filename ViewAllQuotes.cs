@@ -16,18 +16,18 @@ namespace MegaDesk_Fanfan
     public class Quote
     {
         public string? CustomerName { get; set; }
-        public int Price { get; set; } 
-        public int RushOrder { get; set; } 
+        public int QuotePrice { get; set; } 
+        public int RushOrderDays { get; set; } 
 
-        public int DrawerCount { get; set; }
+        public int NumberOfDrawers { get; set; }
 
-        public int SurfaceMaterial { get; set; }
+        public string? SurfaceMaterial { get; set; }
 
-        public int DeskWidth { get; set; }
-        public int DeskDepth { get; set; }
+        public int Width { get; set; }
+        public int Depth { get; set; }
         //date
-        public DateTime Date { get; set; }
-       
+        public DateTime QuoteDate { get; set; }
+
     }
 
     public partial class ViewAllQuotes : Form
@@ -48,8 +48,27 @@ namespace MegaDesk_Fanfan
                 string json = File.ReadAllText(filePath);
                 List<Quote> quotes = JsonConvert.DeserializeObject<List<Quote>>(json) ?? new List<Quote>();
 
-                // Bind the quotes to the DataGridView
-                dataGridView1.DataSource = quotes;
+                // Bind the quotes to the DataGridView with a mapping
+                // Create a DataTable to hold the data
+                DataTable dataTable = new DataTable();
+                dataTable.Columns.Add("Name");
+                dataTable.Columns.Add("Price");
+                dataTable.Columns.Add("Rush");
+                dataTable.Columns.Add("Drawer");
+                dataTable.Columns.Add("Material");
+                dataTable.Columns.Add("Width");
+                dataTable.Columns.Add("Depth");
+                dataTable.Columns.Add("Date");
+
+                foreach (var quote in quotes)
+                {
+                    dataTable.Rows.Add(quote.CustomerName, quote.QuotePrice, quote.RushOrderDays,
+                        quote.NumberOfDrawers, quote.SurfaceMaterial,
+                        quote.Width, quote.Depth, quote.QuoteDate);
+                }
+
+                // Bind the DataTable to the DataGridView
+                dataGridView1.DataSource = dataTable;
             }
             else
             {
