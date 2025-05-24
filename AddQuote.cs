@@ -1,12 +1,9 @@
-﻿using System;
+﻿// Created by Fanfan
+// This file contains the AddQuote class, which is responsible for handling the quote creation process in the MegaDesk application.
+using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+using System.IO;
+using System.Xml;
 using Newtonsoft.Json;
 
 namespace MegaDesk_Fanfan
@@ -16,6 +13,9 @@ namespace MegaDesk_Fanfan
         // Define rush order day limits
         private const int MIN_RUSH = 3;
         private const int MAX_RUSH = 14;
+        // datetime format
+        private const string DATE_FORMAT = "MM/dd/yyyy";
+
 
         public AddQuote()
         {
@@ -78,7 +78,12 @@ namespace MegaDesk_Fanfan
 
             // Create a new DeskQuote object
             Desk desk = new Desk(width, depth, drawers, listBoxmaterial.Text);
-            DeskQuote quote = new DeskQuote(customerName.Text, desk, parsedRushDays, 0);
+            DeskQuote quote = new DeskQuote(
+                customerName.Text,
+                desk,
+                int.Parse(rushDays.Text),
+                DateTime.Now
+            );
             quote.CalculateQuote();
 
             // show the quote
@@ -87,28 +92,45 @@ namespace MegaDesk_Fanfan
                             $"Number of Drawers: {desk.NumberOfDrawers}\n" +
                             $"Surface Material: {desk.SurfaceMaterial}\n" +
                             $"Rush Order Days: {quote.RushOrderDays}\n" +
-                            $"Total Price: {quote.QuotePrice:C}");
+                            $"Total Price: {quote.QuotePrice:C}\n" +
+                            $"Date: {quote.QuoteDate.ToString(DATE_FORMAT)}");
             // conditionally save the quote
             if (MessageBox.Show("Do you want to save this quote?", "Save Quote", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 // SaveQuote(quote); // Removed because the method does not exist; saving is handled below.
             }
             // Store the desk quotes  and append them to a JSON file named quotes.json.
-            string filePath = "quotes.json";
-            List<DeskQuote> quotes = new List<DeskQuote>();
-            quotes.Add(quote);
-            string json = JsonConvert.SerializeObject(quotes);
-            System.IO.File.AppendAllText(filePath, json);
-            System.IO.File.AppendAllText(filePath, Environment.NewLine);
-            // Show a success message
-            MessageBox.Show("Quote saved successfully!");
-            // Optionally, you can clear the form fields after saving
+            // Create a list to hold the quotes.
+            List<DeskQuote> quotes = new List<DeskQuote>{quote};
+            string json = JsonConvert.SerializeObject(quotes, Newtonsoft.Json.Formatting.Indented);
+            // save and append the quotes to the list
+            if (!File.Exists("quotes.json"))
+            {
+                // If the file does not exist, create it
+                File.WriteAllText("quotes.json", json);
+            }
+            else
+            {
+                // If the file exists, append the new quote in an array format
+                string NewLineHandli = File.ReadAllText("quotes.json");
+                // Remove the last closing bracket
+                NewLineHandli = NewLineHandli.TrimEnd(']');
+                // Append the new quote
+                File.WriteAllText("quotes.json", NewLineHandli + "," + json.TrimStart('[').TrimEnd(']') + "]");
+            }
+
+            // Clear the input fields
             customerName.Clear();
             deskWide.Clear();
             deskDepth.Clear();
             numberDrawers.Clear();
-            listBoxmaterial.SelectedIndex = -1;
+            listBoxmaterial.ClearSelected();
             rushDays.Clear();
+            // Reset the surface material to default
+            listBoxmaterial.SelectedIndex = -1;
+            // Show a success message
+            MessageBox.Show("Quote saved successfully!");
+
         }
     }
 }

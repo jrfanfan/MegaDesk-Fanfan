@@ -17,22 +17,26 @@ namespace MegaDesk_Fanfan
         public Desk Desk { get; set; }
         public int RushOrderDays { get; set; }
         public int QuotePrice { get; set; }
+        // date of the quote
+        public DateTime QuoteDate { get; set; }
 
         // constructor to initialize the desk quote object
-        public DeskQuote(string customerName, Desk desk, int rushOrderDays, int quotePrice)
+        public DeskQuote(string customerName, Desk desk, int rushOrderDays, DateTime quoteDate)
         {
             CustomerName = customerName;
             Desk = desk;
             RushOrderDays = rushOrderDays;
-            QuotePrice = quotePrice;
+            QuoteDate = quoteDate;
         }
         // constructor to initialize the desk quote object with default values
-        public DeskQuote()
+        public DeskQuote(string text, Desk desk)
         {
             CustomerName = "Unknown";
             Desk = new Desk(0, 0, 0);
             RushOrderDays = 0;
             QuotePrice = 0;
+            Desk = desk;
+            QuoteDate = DateTime.Now;
         }
         // method to calculate the quote price based on the desk dimensions, number of drawers, and rush order
         public void CalculateQuote()
