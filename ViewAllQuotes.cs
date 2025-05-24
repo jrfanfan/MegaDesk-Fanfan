@@ -20,8 +20,14 @@ namespace MegaDesk_Fanfan
         public int RushOrderDays { get; set; } 
 
         public int NumberOfDrawers { get; set; }
+        // Assuming SurfaceMaterial is a 2D array with at least one element
+        // If it's a single-dimensional array, change the type accordingly
+        // If it's a string, change the type accordingly
+        // If it's a list, change the type accordingly
+        public List<string>? SurfaceMaterial { get; set; }
 
-        public string? SurfaceMaterial { get; set; }
+        // Assuming Width and Depth are integers
+        // If they are of a different type, change the type accordingly
 
         public int Width { get; set; }
         public int Depth { get; set; }
@@ -63,7 +69,7 @@ namespace MegaDesk_Fanfan
                 foreach (var quote in quotes)
                 {
                     dataTable.Rows.Add(quote.CustomerName, quote.QuotePrice, quote.RushOrderDays,
-                        quote.NumberOfDrawers, quote.SurfaceMaterial,
+                        quote.NumberOfDrawers, quote.SurfaceMaterial, 
                         quote.Width, quote.Depth, quote.QuoteDate);
                 }
 
