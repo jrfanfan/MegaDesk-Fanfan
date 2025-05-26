@@ -16,5 +16,20 @@ namespace MegaDesk_Fanfan
         {
             InitializeComponent();
         }
+
+        private void SearchQuotes_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBoxSearch_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonsearch_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
