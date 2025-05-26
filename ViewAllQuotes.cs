@@ -11,27 +11,29 @@ namespace MegaDesk_Fanfan
 {
     // Desk class definition
     // The Desk class is defined elsewhere in the project.
+    // Assuming it has properties like Width, Depth, NumberOfDrawers, and SurfaceMaterial.
+    // The Quote class represents a quote for a desk order.
+    // It contains properties for customer name, desk details, rush order days, quote price, and quote date.
+    // If the Desk class is not defined, you can define it here or ensure it's included in the project.
+    // Example Desk class definition (if not already defined)
+    public class DeskQ
+    {
+        public int Width { get; set; }
+        public int Depth { get; set; }
+        public int NumberOfDrawers { get; set; }
+        public string? SurfaceMaterial { get; set; }
+    }
 
-    // Define the Quote class if it does not exist elsewhere
     public class Quote
     {
         public string? CustomerName { get; set; }
-        public int QuotePrice { get; set; } 
-        public int RushOrderDays { get; set; } 
-
-        public int NumberOfDrawers { get; set; }
-        // Assuming SurfaceMaterial is a 2D array with at least one element
-        // If it's a single-dimensional array, change the type accordingly
-        // If it's a string, change the type accordingly
-        // If it's a list, change the type accordingly
-        public List<string>? SurfaceMaterial { get; set; }
-
-        // Assuming Width and Depth are integers
-        // If they are of a different type, change the type accordingly
-
-        public int Width { get; set; }
-        public int Depth { get; set; }
-        //date
+        public required DeskQ Desk { get; set; } // Assuming Desk is a class defined elsewhere
+        public int Width => Desk.Width; // Assuming Desk has Width property
+        public int Depth => Desk.Depth; // Assuming Desk has Depth property
+        public int NumberOfDrawers => Desk.NumberOfDrawers; // Assuming Desk has NumberOfDrawers property
+        public string? SurfaceMaterial => Desk.SurfaceMaterial; // Assuming Desk has SurfaceMaterial property
+        public int RushOrderDays { get; set; }
+        public int QuotePrice { get; set; }
         public DateTime QuoteDate { get; set; }
 
     }
@@ -44,50 +46,51 @@ namespace MegaDesk_Fanfan
             
         }
 
-        private void ViewAllQuotes_Load(object sender, EventArgs e)
+        private async void ViewAllQuotes_Load(object sender, EventArgs e)
         {
             MessageBox.Show("Welcome to View All Quotes!");
             // Read the quotes from the JSON file and bind to the DataGridView
             string filePath = "quotes.json"; // Adjust the path as needed
-            if (File.Exists(filePath))
+            // reding the quotes from the JSON file
+            string json = await File.ReadAllTextAsync(filePath);
+            // Deserialize the JSON data into a list of Quote objects
+            List<Quote> quotes = JsonConvert.DeserializeObject<List<Quote>>(json) ?? new List<Quote>();
+
+            // Create and set up the DataTable
+            DataTable dataTable1 = new DataTable();
+            dataTable1.Columns.Add("CustomerName", typeof(string));
+            dataTable1.Columns.Add("Width", typeof(int));
+            dataTable1.Columns.Add("Depth", typeof(int));
+            dataTable1.Columns.Add("NumberOfDrawers", typeof(int));
+            dataTable1.Columns.Add("SurfaceMaterial", typeof(string));
+            dataTable1.Columns.Add("RushOrderDays", typeof(int));
+            dataTable1.Columns.Add("QuotePrice", typeof(int));
+            dataTable1.Columns.Add("QuoteDate", typeof(string));
+
+            // foreach quote, create a DataRow and add it to the DataTable
+            foreach (var quote in quotes)
             {
-                string json = File.ReadAllText(filePath);
-                List<Quote> quotes = JsonConvert.DeserializeObject<List<Quote>>(json) ?? new List<Quote>();
-
-                // Bind the quotes to the DataGridView with a mapping
-                // Create a DataTable to hold the data
-                DataTable dataTable = new DataTable();
-                dataTable.Columns.Add("Name");
-                dataTable.Columns.Add("Price");
-                dataTable.Columns.Add("Rush");
-                dataTable.Columns.Add("Drawer");
-                dataTable.Columns.Add("Material");
-                dataTable.Columns.Add("Width");
-                dataTable.Columns.Add("Depth");
-                dataTable.Columns.Add("Date");
-
-                foreach (var quote in quotes)
-                {
-                    dataTable.Rows.Add(quote.CustomerName, quote.QuotePrice, quote.RushOrderDays,
-                        quote.NumberOfDrawers, quote.SurfaceMaterial, 
-                        quote.Width, quote.Depth, quote.QuoteDate);
-                }
-
-                // Bind the DataTable to the DataGridView
-                dataGridView1.DataSource = dataTable;
+                DataRow row = dataTable1.NewRow();
+                row["CustomerName"] = quote.CustomerName;
+                row["Width"] = quote.Width;
+                row["Depth"] = quote.Depth;
+                row["NumberOfDrawers"] = quote.NumberOfDrawers;
+                row["SurfaceMaterial"] = quote.SurfaceMaterial;
+                row["RushOrderDays"] = quote.RushOrderDays;
+                row["QuotePrice"] = quote.QuotePrice;
+                row["QuoteDate"] = quote.QuoteDate.ToString("MM/dd/yyyy");
+                dataTable1.Rows.Add(row);
             }
-            else
-            {
-                MessageBox.Show("No quotes found.");
-            }
+            dataGridView1.DataSource = dataTable1;
+
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            MessageBox.Show("You clicked on a cell!");
 
         }
 
         
+        }
     }
-}
+

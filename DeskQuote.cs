@@ -32,7 +32,7 @@ namespace MegaDesk_Fanfan
         public DeskQuote(string text, Desk desk)
         {
             CustomerName = "Unknown";
-            Desk = new Desk(0, 0, 0);
+            Desk = new Desk(0, 0, 0, "Unknown");
             RushOrderDays = 0;
             QuotePrice = 0;
             Desk = desk;
