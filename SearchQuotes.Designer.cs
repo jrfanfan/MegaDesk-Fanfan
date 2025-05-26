@@ -31,58 +31,75 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SearchQuotes));
             labelSearch = new Label();
             comboBoxSearch = new ComboBox();
-            buttonsearch = new Button();
+            buttonSearch = new Button();
+            dataGridView1 = new DataGridView();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
             // labelSearch
             // 
             labelSearch.AutoSize = true;
             labelSearch.Font = new Font("Segoe Script", 16F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point, 0);
-            labelSearch.ForeColor = Color.Tomato;
-            labelSearch.Location = new Point(199, 65);
+            labelSearch.ForeColor = Color.Salmon;
+            labelSearch.Location = new Point(217, 9);
             labelSearch.Name = "labelSearch";
             labelSearch.Size = new Size(663, 53);
             labelSearch.TabIndex = 0;
             labelSearch.Text = "Search Quotes For A Surface Material";
+            labelSearch.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // comboBoxSearch
             // 
-            comboBoxSearch.BackColor = SystemColors.InactiveCaption;
-            comboBoxSearch.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            comboBoxSearch.ForeColor = Color.FromArgb(0, 0, 192);
+            comboBoxSearch.BackColor = SystemColors.GradientInactiveCaption;
+            comboBoxSearch.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
+            comboBoxSearch.ForeColor = SystemColors.HotTrack;
             comboBoxSearch.FormattingEnabled = true;
-            comboBoxSearch.Items.AddRange(new object[] { "", "laminate", "oak", "pine", "rosewood", "veneer" });
-            comboBoxSearch.Location = new Point(851, 131);
+            comboBoxSearch.Items.AddRange(new object[] { "", "laminate", "Oak", "Pine", "Rosewood", "Veneer" });
+            comboBoxSearch.Location = new Point(849, 65);
             comboBoxSearch.Name = "comboBoxSearch";
-            comboBoxSearch.Size = new Size(182, 35);
+            comboBoxSearch.Size = new Size(182, 40);
             comboBoxSearch.TabIndex = 1;
-            comboBoxSearch.SelectedIndexChanged += comboBoxSearch_SelectedIndexChanged;
             // 
-            // buttonsearch
+            // buttonSearch
             // 
-            buttonsearch.BackgroundImage = (Image)resources.GetObject("buttonsearch.BackgroundImage");
-            buttonsearch.BackgroundImageLayout = ImageLayout.Center;
-            buttonsearch.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            buttonsearch.ForeColor = Color.Olive;
-            buttonsearch.Location = new Point(1033, 131);
-            buttonsearch.Name = "buttonsearch";
-            buttonsearch.Size = new Size(64, 35);
-            buttonsearch.TabIndex = 2;
-            buttonsearch.UseVisualStyleBackColor = true;
-            buttonsearch.Click += buttonsearch_Click;
+            buttonSearch.BackgroundImage = (Image)resources.GetObject("buttonSearch.BackgroundImage");
+            buttonSearch.BackgroundImageLayout = ImageLayout.Stretch;
+            buttonSearch.FlatAppearance.BorderColor = Color.Teal;
+            buttonSearch.FlatAppearance.BorderSize = 4;
+            buttonSearch.Location = new Point(1037, 65);
+            buttonSearch.Name = "buttonSearch";
+            buttonSearch.Size = new Size(51, 40);
+            buttonSearch.TabIndex = 2;
+            buttonSearch.UseVisualStyleBackColor = true;
+            buttonSearch.Click += buttonSearch_Click_1;
+            // 
+            // dataGridView1
+            // 
+            dataGridView1.AllowUserToAddRows = false;
+            dataGridView1.AllowUserToDeleteRows = false;
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Location = new Point(10, 123);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.ReadOnly = true;
+            dataGridView1.RowHeadersWidth = 62;
+            dataGridView1.Size = new Size(1098, 449);
+            dataGridView1.TabIndex = 3;
             // 
             // SearchQuotes
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = SystemColors.ActiveCaption;
+            BackColor = SystemColors.InactiveCaption;
             ClientSize = new Size(1120, 576);
-            Controls.Add(buttonsearch);
+            Controls.Add(dataGridView1);
+            Controls.Add(buttonSearch);
             Controls.Add(comboBoxSearch);
             Controls.Add(labelSearch);
+            MaximizeBox = false;
             Name = "SearchQuotes";
             Text = "SearchQuotes";
             Load += SearchQuotes_Load;
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -91,6 +108,7 @@
 
         private Label labelSearch;
         private ComboBox comboBoxSearch;
-        private Button buttonsearch;
+        private Button buttonSearch;
+        private DataGridView dataGridView1;
     }
 }
