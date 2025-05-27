@@ -32,8 +32,8 @@
             labelSearch = new Label();
             comboBoxSearch = new ComboBox();
             buttonSearch = new Button();
-            dataGridView1 = new DataGridView();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            dataGridViewSearch = new DataGridView();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewSearch).BeginInit();
             SuspendLayout();
             // 
             // labelSearch
@@ -73,17 +73,17 @@
             buttonSearch.UseVisualStyleBackColor = true;
             buttonSearch.Click += buttonSearch_Click_1;
             // 
-            // dataGridView1
+            // dataGridViewSearch
             // 
-            dataGridView1.AllowUserToAddRows = false;
-            dataGridView1.AllowUserToDeleteRows = false;
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(10, 123);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.ReadOnly = true;
-            dataGridView1.RowHeadersWidth = 62;
-            dataGridView1.Size = new Size(1098, 449);
-            dataGridView1.TabIndex = 3;
+            dataGridViewSearch.AllowUserToAddRows = false;
+            dataGridViewSearch.AllowUserToDeleteRows = false;
+            dataGridViewSearch.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewSearch.Location = new Point(10, 123);
+            dataGridViewSearch.Name = "dataGridViewSearch";
+            dataGridViewSearch.ReadOnly = true;
+            dataGridViewSearch.RowHeadersWidth = 62;
+            dataGridViewSearch.Size = new Size(1098, 449);
+            dataGridViewSearch.TabIndex = 3;
             // 
             // SearchQuotes
             // 
@@ -91,7 +91,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.InactiveCaption;
             ClientSize = new Size(1120, 576);
-            Controls.Add(dataGridView1);
+            Controls.Add(dataGridViewSearch);
             Controls.Add(buttonSearch);
             Controls.Add(comboBoxSearch);
             Controls.Add(labelSearch);
@@ -99,7 +99,7 @@
             Name = "SearchQuotes";
             Text = "SearchQuotes";
             Load += SearchQuotes_Load;
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewSearch).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -109,6 +109,6 @@
         private Label labelSearch;
         private ComboBox comboBoxSearch;
         private Button buttonSearch;
-        private DataGridView dataGridView1;
+        private DataGridView dataGridViewSearch;
     }
 }
