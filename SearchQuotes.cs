@@ -60,22 +60,43 @@ namespace MegaDesk_Fanfan
         {
             // Read the quotes from the JSON file and bind to the DataGridView
             string filePath = "quotes.json"; // Adjust the path as needed
-            // Create a list to hold the quotes
-            List<QuoteSearch> quotes = new List<QuoteSearch>();
-            // deserialize the JSON data into a list of QuoteSearch objects
-            string json = System.IO.File.ReadAllText(filePath);
-            quotes = Newtonsoft.Json.JsonConvert.DeserializeObject<List<QuoteSearch>>(json) ?? new List<QuoteSearch>();
-            // Use selected criteria to filter the quotes
-            string selectedCriteria = comboBoxSearch.SelectedItem?.ToString() ?? string.Empty;
-            var filteredQuotes = quotes.Where(q => q.SurfaceMaterial?.Contains(selectedCriteria, StringComparison.OrdinalIgnoreCase) == true).ToList();
-            // if no quotes match the criteria, show a message box
-            if (filteredQuotes.Count == 0)
+            if (!System.IO.File.Exists(filePath))
             {
-                MessageBox.Show("No quotes found matching the selected criteria.", "Search Result", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Quotes file not found. Add some quotes first.");
+                // Optionally, you can redirect the user to the AddQuote form or another action
+                this.Close(); // Close the current form if the file does not exist
+                var addQuoteForm = new AddQuote();
+                addQuoteForm.Show();
                 return;
             }
-            dataGridViewSearch.DataSource = filteredQuotes;
 
+            // Create a list to hold the quotes
+            List<QuoteSearch> quotes = new List<QuoteSearch>();
+            // Check if quotes are empty and show a message if so
+            if (quotes.Count == 0)
+            {
+                MessageBox.Show("No quotes found.");
+                return;
+            }
+            else if (quotes.Count > 0)
+            {
+                MessageBox.Show($"Found {quotes.Count} quotes.");
+
+                // deserialize the JSON data into a list of QuoteSearch objects
+                string json = System.IO.File.ReadAllText(filePath);
+                quotes = Newtonsoft.Json.JsonConvert.DeserializeObject<List<QuoteSearch>>(json) ?? new List<QuoteSearch>();
+                // Use selected criteria to filter the quotes
+                string selectedCriteria = comboBoxSearch.SelectedItem?.ToString() ?? string.Empty;
+                var filteredQuotes = quotes.Where(q => q.SurfaceMaterial?.Contains(selectedCriteria, StringComparison.OrdinalIgnoreCase) == true).ToList();
+                // if no quotes match the criteria, show a message box
+                if (filteredQuotes.Count == 0)
+                {
+                    MessageBox.Show("No quotes found matching the selected criteria.", "Search Result", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+                dataGridViewSearch.DataSource = filteredQuotes;
+
+            }
         }
     }
 }
