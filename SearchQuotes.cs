@@ -68,6 +68,12 @@ namespace MegaDesk_Fanfan
             // Use selected criteria to filter the quotes
             string selectedCriteria = comboBoxSearch.SelectedItem?.ToString() ?? string.Empty;
             var filteredQuotes = quotes.Where(q => q.SurfaceMaterial?.Contains(selectedCriteria, StringComparison.OrdinalIgnoreCase) == true).ToList();
+            // if no quotes match the criteria, show a message box
+            if (filteredQuotes.Count == 0)
+            {
+                MessageBox.Show("No quotes found matching the selected criteria.", "Search Result", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
             dataGridViewSearch.DataSource = filteredQuotes;
 
         }
