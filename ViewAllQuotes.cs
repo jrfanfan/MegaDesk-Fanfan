@@ -51,38 +51,61 @@ namespace MegaDesk_Fanfan
             MessageBox.Show("Welcome to View All Quotes!");
             // Read the quotes from the JSON file and bind to the DataGridView
             string filePath = "quotes.json"; // Adjust the path as needed
-            // reding the quotes from the JSON file
+            if (!File.Exists(filePath))
+            {
+                MessageBox.Show("Quotes file not found. Add some quotes first.");
+                // Optionally, you can redirect the user to the AddQuote form or another action
+                this.Close(); // Close the current form if the file does not exist
+                              // or you can redirect to another form
+                var addQuoteForm = new AddQuote();
+                addQuoteForm.Show();
+                return;
+            }
+            // reading the quotes from the JSON file
             string json = await File.ReadAllTextAsync(filePath);
             // Deserialize the JSON data into a list of Quote objects
             List<Quote> quotes = JsonConvert.DeserializeObject<List<Quote>>(json) ?? new List<Quote>();
-
-            // Create and set up the DataTable
-            DataTable dataTable1 = new DataTable();
-            dataTable1.Columns.Add("CustomerName", typeof(string));
-            dataTable1.Columns.Add("Width", typeof(int));
-            dataTable1.Columns.Add("Depth", typeof(int));
-            dataTable1.Columns.Add("NumberOfDrawers", typeof(int));
-            dataTable1.Columns.Add("SurfaceMaterial", typeof(string));
-            dataTable1.Columns.Add("RushOrderDays", typeof(int));
-            dataTable1.Columns.Add("QuotePrice", typeof(int));
-            dataTable1.Columns.Add("QuoteDate", typeof(string));
-
-            // foreach quote, create a DataRow and add it to the DataTable
-            foreach (var quote in quotes)
+            // Check if quotes are empty and show a message if so
+            if (quotes.Count == 0)
             {
-                DataRow row = dataTable1.NewRow();
-                row["CustomerName"] = quote.CustomerName;
-                row["Width"] = quote.Width;
-                row["Depth"] = quote.Depth;
-                row["NumberOfDrawers"] = quote.NumberOfDrawers;
-                row["SurfaceMaterial"] = quote.SurfaceMaterial;
-                row["RushOrderDays"] = quote.RushOrderDays;
-                row["QuotePrice"] = quote.QuotePrice;
-                row["QuoteDate"] = quote.QuoteDate.ToString("MM/dd/yyyy");
-                dataTable1.Rows.Add(row);
+                MessageBox.Show("No quotes found.");
+                return;
             }
-            dataGridView1.DataSource = dataTable1;
+            else if (quotes.Count > 0)
+            {
+                MessageBox.Show($"Found {quotes.Count} quotes.");
 
+
+                // Create and set up the DataTable
+                DataTable dataTable1 = new DataTable();
+                dataTable1.Columns.Add("CustomerName", typeof(string));
+                dataTable1.Columns.Add("Width", typeof(int));
+                dataTable1.Columns.Add("Depth", typeof(int));
+                dataTable1.Columns.Add("NumberOfDrawers", typeof(int));
+                dataTable1.Columns.Add("SurfaceMaterial", typeof(string));
+                dataTable1.Columns.Add("RushOrderDays", typeof(int));
+                dataTable1.Columns.Add("QuotePrice", typeof(int));
+                dataTable1.Columns.Add("QuoteDate", typeof(string));
+
+                // foreach quote, create a DataRow and add it to the DataTable
+                foreach (var quote in quotes)
+                {
+                    DataRow row = dataTable1.NewRow();
+                    row["CustomerName"] = quote.CustomerName;
+                    row["Width"] = quote.Width;
+                    row["Depth"] = quote.Depth;
+                    row["NumberOfDrawers"] = quote.NumberOfDrawers;
+                    row["SurfaceMaterial"] = quote.SurfaceMaterial;
+                    row["RushOrderDays"] = quote.RushOrderDays;
+                    row["QuotePrice"] = quote.QuotePrice;
+                    row["QuoteDate"] = quote.QuoteDate.ToString("MM/dd/yyyy");
+                    dataTable1.Rows.Add(row);
+                }
+                // Bind the DataTable to the DataGridView
+                dataGridView1.DataSource = dataTable1;
+            }
+            
+            
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
